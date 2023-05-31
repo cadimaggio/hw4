@@ -1,13 +1,20 @@
-<h1>Places</h1>
-
+<% if @current_user %>
 <% @places = Place.where({"user_id" => @current_user["id"] }) %>
+
+    <div class="row">
+      <div class="col-sm-9">
+        <h1>Places</h1>
+      </div>
+      <div class="col-sm-12">
+        <a href="/places/new/" class="btn btn-success">New Place</a>
+      </div>
+    </div>
 
 <ul>
   <% for place in @places %>
     <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
   <% end %>
 </ul>
-
-<p>
-  <a href="/places/new">New place</a>
-</p>
+<% else %>
+Please <a href="/sessions/new">log in</a> to view your places.
+<% end %>
