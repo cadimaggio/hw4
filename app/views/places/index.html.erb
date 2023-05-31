@@ -1,5 +1,7 @@
 <h1>Places</h1>
 
+<% @places = Place.where({"user_id" => @current_user["id"] }) %>
+
 <ul>
   <% for place in @places %>
     <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
