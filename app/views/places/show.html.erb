@@ -8,6 +8,8 @@
 </div>
 </div>
 
+<% @posts = Post.where({ "user_id" => @current_user["id"] }) %>
+
 <h2>My Posts</h2>
 
 <div class="row">
@@ -18,7 +20,7 @@
       <img src="<%= post["url"] %>" class="img-fluid">
       <p><%= post["description"] %></p>
     </div>
-  <% end %>
+    <% end %>
 </div>
 
 <% end %>
